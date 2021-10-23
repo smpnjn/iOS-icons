@@ -1,0 +1,231 @@
+body {
+    margin: 2rem;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: #0b0c10;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+
+#all-icons {
+    display: flex;
+    width: 20rem;
+    background-image: url('./icons/background.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 40rem;
+    transform-style: preserve-3d;
+    align-content: flex-start;
+    justify-content: flex-start;
+    border-radius: 20px;
+    transition: all 0.1s ease-out;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 5rem;
+    user-select: none;
+    transform: rotateZ(0deg) translateX(0) translateY(0);
+    will-change: transform, width;
+    flex-grow: 0.0001;
+    transform-origin: 50% 50%;
+    transition: all 0.1s ease-out;
+    margin: 0 2rem 1rem 0;
+    position: relative;
+    cursor: pointer;
+    height: 7rem;
+}
+
+.icon-container img {
+    width: calc(100% + 2px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.sub-menu {    
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.0001);
+    transition: opacity 0.001s linear, transform 0.15s ease-out;
+    top: 5.5rem;
+    overflow: hidden;
+    pointer-events: none;
+    left: 0;
+    background: #38393cc7;
+    box-shadow: 0 2px 20px rgb(0 0 0 / 15%);
+    backdrop-filter: blur(18px);
+    left: 0;
+    transform-origin: 0 0;
+    border-radius: 16px;
+    z-index: 9999;
+}
+
+.item:hover {
+    cursor: pointer;
+    background: #555b68b5;
+}
+
+.notification {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    color: rgba(255,255,255,0.9);
+    width: 19rem;
+    background: #38393cc7;
+    box-shadow: 0 2px 20px rgb(0 0 0 / 15%);
+    backdrop-filter: blur(18px);
+}
+.notification .icon, .notification .icon img {
+    width: 3rem;
+    margin: 0 1rem 0 0;
+}
+
+.notification + .notification {
+    bottom: 9rem;
+}
+
+.notification h3 {
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: white;
+}
+p {
+    margin: 0;
+    line-height: 1.15rem;
+    font-size: 0.883rem;
+}
+.sub-menu.show-sub-menu {
+    pointer-events: all;
+    opacity: 1;
+    transform: scale(1);
+}
+.sub-menu .item {
+    letter-spacing: 0.25px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 1rem;
+    min-width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+.sub-menu .item:last-of-type {
+    border-bottom: none;
+}
+.cover {    
+    position: absolute;
+    top: -1rem;
+    backdrop-filter: blur(4px);
+    left: -1rem;
+    width: calc(100% + 2rem);
+    opacity: 0;
+    z-index: 99999;
+    height: calc(100% + 2rem);
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+}
+
+.icon-container:nth-of-type(3n) {
+    margin-right: 0;
+}
+
+.icon-image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 24px;
+    background: linear-gradient(213deg, #ff7147, #e0417f, #8133a9);
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3));
+}
+
+.icon-text {
+    opacity: 1;
+    transition: opacity 0.05s ease-out;
+    color: rgba(255,255,255,0.7);
+    line-height: 2rem;
+}
+
+[data-shaking="true"] .icon-container {
+    animation: shake 0.4s linear infinite;
+}
+
+[data-dropdown="true"] [data-selected="true"] {
+    transform: scale(1.08) translateZ(10px);
+}
+
+[data-dropdown="true"] [data-selected="true"] .icon-text {
+    opacity: 0;
+}
+
+.remove-icon {
+    background: #afb0c1e0;
+    color: rgba(0,0,0,0.7);
+    border-radius: 100px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    pointer-events: none;
+    text-align: center;
+    transition: all 0.1s ease-out;
+    line-height: 1.5rem;
+    opacity: 0;
+    position: absolute;
+    left: -0.5rem;
+    backdrop-filter: blur(10px);
+    top: -0.5rem;
+}
+
+[data-shaking="true"] .remove-icon {
+    opacity: 1;
+    pointer-events: all;
+}
+[data-dropdown="true"] .cover {
+    opacity: 1;
+}
+@keyframes shake {
+    0% {
+        transform: rotateZ(0deg) translateX(0) translateY(0) scale(1);
+    }
+    20% {
+        transform: rotateZ(-2deg) translateX(0) translateY(0);
+    }
+    40% {
+        transform: rotateZ(0deg) translateX(0) translateY(0);
+    }
+    60% {
+        transform: rotateZ(2deg) translateX(0) translateY(0);
+    }
+    100% {
+        transform: rotateZ(0deg) translateX(0) translateY(0);
+    }
+}
+
+@keyframes scaleBack {
+    0% {
+        transform: scale(1);
+        width: 5rem;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        width: 5rem;
+        opacity: 0;
+        transform: scale(0.0001);
+    }
+    100% {
+        width: 0rem;
+        transform: scale(0.0001);
+    }
+}
