@@ -25,6 +25,10 @@ body {
     padding: 2rem;
 }
 
+#iphone { 
+    position: relative;
+}
+
 .icon-container {
     display: flex;
     flex-direction: column;
