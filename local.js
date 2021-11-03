@@ -23,13 +23,19 @@ let helpers = {
         currentLeft = 0;
         offset = 0;
         if(typeof timers.first !== "undefined") {
-            clearTimeout(timers.first);
+            clearTimeout(timers.first); 
+        } else if(typeof timers.first === "number") {
+            timers.first = undefined;
         }
         if(typeof timers.second !== "undefined") {
             clearTimeout(timers.second);
+        } else if(typeof timers.second === "number") {
+            timers.second = undefined;
         }
         if(typeof timers.third !== "undefined") {
             clearTimeout(timers.third);
+        } else if(typeof timers.third === "number") {
+            timers.third = undefined;
         }
         if(typeof extended == "undefined") {
             document.querySelector('.sub-menu').classList.remove('show-sub-menu');
